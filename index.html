@@ -3,97 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gramixel Forge - Bringing Digital Ideas to Life">
     <title>Gramixel Forge</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navigation -->
     <header>
-        <nav>
-            <div class="logo">Gramixel Forge</div>
-            <div class="nav-links">
-                <a href="#about">About Us</a>
-                <a href="#services">Services</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
-                <button id="darkModeToggle">Toggle Dark Mode</button>
+        <div class="container">
+            <div class="logo">
+                <img src="Gramixel Forge Logo.png" alt="Gramixel Forge Logo">
             </div>
-        </nav>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button id="dark-mode-toggle">🌙 Dark Mode</button>
+            </nav>
+        </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-content">
-            <h1>Gramixel Forge: Turning Your Ideas into Reality</h1>
-            <p>Empowering digital innovation for all. Designed for the dreamers, built for the visionaries.</p>
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Bring Your Digital Ideas to Life with Gramixel Forge</h1>
+            <p>We help individuals and businesses turn their visions into reality through cutting-edge web and software development.</p>
+            <p><strong>Founded by Ziad Jweiles Baldizon in the 9th grade, inspired by the ideas that no one would listen to when he was just a kid.</strong></p>
             <div class="cta-buttons">
-                <a href="#services" class="btn primary">Get Started</a>
-                <a href="#about" class="btn secondary">Learn More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="about-container">
-            <div class="about-image">
-                <!-- Image/Video Placeholder -->
-                <img src="about-placeholder.jpg" alt="About Us">
-            </div>
-            <div class="about-text">
-                <h2>About Gramixel Forge</h2>
-                <p>Gramixel Forge was founded by Samir Ziad Jweiles Baldizon, a visionary who built the company while still in school. With a passion for technology that started in 9th and 10th grade, Samir wanted to give everyone a chance to bring their digital ideas to life.</p>
-                <p>Inspired by childhood dreams of new games and innovative websites, Gramixel Forge was born to make the impossible possible for anyone, regardless of age or experience.</p>
+                <a href="#contact" class="btn">Start Your Project</a>
+                <a href="#services" class="btn secondary-btn">Explore Our Services</a>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section id="services">
-        <h2>Our Services</h2>
-        <div class="services-container">
-            <div class="service-card">
-                <h3>Web Development</h3>
-                <p>Crafting modern, responsive websites that bring your ideas to life.</p>
-            </div>
-            <div class="service-card">
-                <h3>Software Solutions</h3>
-                <p>Developing efficient, cutting-edge software to meet your unique needs.</p>
-            </div>
-            <div class="service-card">
-                <h3>Security Measures</h3>
-                <p>Ensuring your data is safe with the latest in security technology.</p>
+        <div class="container">
+            <h2>What We Offer</h2>
+            <div class="service-container">
+                <div class="service-box">
+                    <h3>Web Development</h3>
+                    <p>From innovative websites to complex web applications, we create responsive and high-performance web solutions.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Software Solutions</h3>
+                    <p>We build custom software tailored to your needs, whether it's for business, entertainment, or personal projects.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Security Services</h3>
+                    <p>Protect your data with our comprehensive security solutions, ensuring safety in every digital transaction.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications">
-        <h2>Our Certifications</h2>
-        <div class="certifications-container">
-            <div class="certification-card">
-                <h3>Responsive Web Design</h3>
-                <img src="cert-placeholder.jpg" alt="Certificate">
-            </div>
-            <div class="certification-card">
-                <h3>Future Certificate</h3>
-                <img src="cert-placeholder.jpg" alt="Certificate">
-            </div>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>Our Story</h2>
+            <p>Gramixel Forge was founded by <strong>Samir Ziad Jweiles Baldizon</strong> while still in the 9th and 10th grades. His passion for technology started at an early age when he dreamed of creating video games and innovative websites. But, as a 9-year-old, no one took his ideas seriously.</p>
+            <p>Determined to bring his visions to life and to give others the opportunity to do the same, he built Gramixel Forge from the ground up. Now, Gramixel Forge helps individuals and companies develop their ideas and make them a reality, using the latest technologies in web and software development.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>Let’s discuss how we can bring your ideas to life. Fill out the form below to start the conversation!</p>
+            <form id="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit" class="btn">Submit</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-links">
-                <a href="#hero">Home</a>
-                <a href="#services">Services</a>
-                <a href="#about">About Us</a>
-                <a href="#contact">Contact</a>
+        <div class="container">
+            <p>© 2024 Gramixel Forge. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
             </div>
-            <div class="social-icons">
-                <!-- Social Icons Placeholder -->
-            </div>
-            <p>&copy; 2024 Gramixel Forge. All rights reserved.</p>
         </div>
     </footer>
 
