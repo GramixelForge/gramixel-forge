@@ -221,10 +221,10 @@ input {
 }
 
 label {
-    width: 40px;
-    height: 20px;
+    width: 100px;
+    height: 25px;
     border-radius: 999px;
-    background: #f3f3f3;
+    background: #2c2c2c;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5) inset;
     cursor: pointer;
     position: relative;
@@ -235,8 +235,8 @@ label {
     width: 16px;
     height: 16px;
     border-radius: 99px;
-    background: white;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5), -10px -10px 30px rgba(0, 0, 0, 0.5) inset;
+    background: #111;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.05), -10px -10px 30px rgba(0, 0, 0, 0.05) inset;
     position: absolute;
     top: 50%;
     left: 10%;
@@ -244,6 +244,7 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 svg {
@@ -253,10 +254,38 @@ svg {
 
 .sun {
     color: #ffd600;
-    margin-top: 0%;
+    margin-top: -150%;
+    opacity: 0;
 }
 
 .moon {
-    margin-top: -150%;
+    margin-top: 0%;
     color: white;
+    opacity: 1;
+}
+
+input[type=checkbox]:checked + .display label .circle {
+    background: #f3f3f3;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+input[type=checkbox]:checked + .display label .circle {
+    left: 100%;
+    transform: translate(-110%, -50%);
+    background: white;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5), -10px -10px 30px rgba(0, 0, 0, 0.5) inset;
+}
+
+input[type=checkbox]:checked + .display label .circle .moon {
+    margin-top: 150%;
+    opacity: 0;
+}
+
+input[type=checkbox]:checked + .display label .circle .sun {
+    margin-top: 0%;
+    opacity: 1;
+}
+
+label:active .circle {
+    width: 25x
 }
