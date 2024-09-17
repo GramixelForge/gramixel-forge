@@ -198,3 +198,9 @@ footer p {
 .dark-mode .service-card {
     background-color: #f0f0f0;
 }
+
+/* dark mode toggle button */
+
+.toggle-btn {
+    color: #6a00ff;
+}
