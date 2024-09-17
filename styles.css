@@ -109,7 +109,7 @@ footer {
 
 /* Certifications Section */
 #certifications {
-    background-color: #1a1a1a;
+    background-color: #000000;
     padding: 60px 20px;
 }
 
@@ -168,8 +168,12 @@ footer p {
 }
 
 .dark-mode .certification-card {
+    background-color: #6a00ff;
+    color: #ffffff;
+}
+
+.dark-mode .cert-section {
     background-color: #ffffff;
-    color: #121212;
 }
 
 .dark-mode header {
