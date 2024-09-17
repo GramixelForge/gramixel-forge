@@ -89,9 +89,17 @@ h2 {
     justify-content: space-around;
 }
 
+.service-card {
+    background-color: #1f1f1f;
+}
+
 .service-box {
     text-align: center;
     width: 30%;
+}
+
+#about {
+    text-align: center;
 }
 
 footer {
@@ -178,4 +186,8 @@ footer p {
 
 .dark-mode header {
     background-color: #ffffff;
+}
+
+.dark-mode .service-card {
+    background-color: #f0f0f0;
 }
