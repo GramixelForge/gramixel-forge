@@ -123,7 +123,8 @@ footer {
 }
 
 .certification-card img {
-    width: 100%;
+    width: 50%;
+    height: 50%;
 }
 
 /* Footer */
@@ -169,4 +170,8 @@ footer p {
 .dark-mode .certification-card {
     background-color: #ffffff;
     color: #121212;
+}
+
+.dark-mode header {
+    background-color: #ffffff;
 }
