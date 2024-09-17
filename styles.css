@@ -36,6 +36,9 @@ nav button {
     color: #6a00ff;
     border: none;
     cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 20px;
 }
 
 .hero {
