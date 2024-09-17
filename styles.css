@@ -93,9 +93,10 @@ h2 {
     background-color: #1f1f1f;
     margin: 20px;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: inline-block;
     width: 350px;
+    text-align: center;
 }
 
 .service-box {
