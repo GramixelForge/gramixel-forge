@@ -33,7 +33,7 @@ nav ul li a {
 
 nav button {
     background-color: transparent;
-    color: #ffffff;
+    color: #6a00ff;
     border: none;
     cursor: pointer;
 }
@@ -200,7 +200,3 @@ footer p {
 }
 
 /* dark mode toggle button */
-
-.toggle-btn {
-    color: #6a00ff;
-}
