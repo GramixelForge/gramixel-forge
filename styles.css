@@ -107,6 +107,43 @@ footer {
     margin: 0 10px;
 }
 
+/* Certifications Section */
+#certifications {
+    background-color: #1a1a1a;
+    padding: 60px 20px;
+}
+
+.certification-card {
+    background-color: #1f1f1f;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 250px;
+}
+
+.certification-card img {
+    width: 100%;
+}
+
+/* Footer */
+footer {
+    background-color: #121212;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+footer p {
+    margin-top: 20px;
+}
+
 /* Dark Mode */
 .dark-mode {
     background-color: #ffffff;
@@ -127,4 +164,9 @@ footer {
 
 .dark-mode footer {
     background-color: #eeeeee;
+}
+
+.dark-mode .certification-card {
+    background-color: #ffffff;
+    color: #121212;
 }
