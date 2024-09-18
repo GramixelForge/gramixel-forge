@@ -3,9 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gramixel Forge - Web and Software Solutions">
     <title>Gramixel Forge</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2c3OL5Y0rlVIFAZftwZkIyZRrW28US84",
+            authDomain: "gramixelforge-d0522.firebaseapp.com",
+            projectId: "gramixelforge-d0522",
+            storageBucket: "gramixelforge-d0522.appspot.com",
+            messagingSenderId: "971461643653",
+            appId: "1:971461643653:web:d7bf1db370e249c96948ec",
+            measurementId: "G-3L1V15QL54"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        // Sign-in with Google
+        window.signInWithGoogle = () => {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+                    // The signed-in user info.
+                    const user = result.user;
+                    console.log('User signed in:', user);
+                    window.location.href = 'create-account.html'; // Redirect after sign-in
+                }).catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Error signing in:', errorMessage);
+                });
+        };
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -35,76 +76,10 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="service-container">
-
-            <div class="service-card"> 
-                <div class="service-box">
-                    <h3>Website Development</h3>
-                    <p>Custom responsive websites tailored to your needs.</p>
-                </div>
-            </div>
-
-            <div class="service-card"> 
-                <div class="service-box">
-                    <h3>Software Development</h3>
-                    <p>Innovative solutions for businesses and individuals.</p>
-                </div>
-            </div>
-
-            <div class="service-card"> 
-                <div class="service-box">
-                    <h3>Security Solutions</h3>
-                    <p>Advanced digital security to keep your data safe.</p>
-                </div>
-            </div>
-            
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Gramixel Forge</h2>
-        <p>Gramixel Forge was founded by Ziad Jweiles Baldizon, a visionary who built the company while still in school. With a passion for technology that started in 9th and 10th grade, Ziad wanted to give everyone a chance to bring their digital ideas to life.</p>
-        <p>Inspired by childhood dreams of new games and innovative websites, Gramixel Forge was born to make the impossible possible for anyone, regardless of age or experience.</p>
-        <h3>CEO - Ziad Jweiles Baldizon</h3>
-        <p>“I started Gramixel Forge to make the latest technology accessible and effortless for everyone.”</p>
-    </section>
-
-    <!-- Certificates Section -->
-    <section id="certifications" class="cert-section">
-        <h2>Our Certifications</h2>
-        <div class="certifications-container">
-            <div class="certification-card">
-                <h3>Responsive Web Design</h3>
-                <img src="cert.png" alt="Certificate Image">
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <h2>Our Portfolio</h2>
-        <p>Coming Soon - Showcase of projects from Gramixel Forge.</p>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Us</h2>
-        <form id="contact-form">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-            
-            <button type="submit" class="btn">Submit</button>
-        </form>
+        <button id="googleSignIn" class="btn" onclick="signInWithGoogle()">Sign In with Google</button>
     </section>
 
     <!-- Footer -->

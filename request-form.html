@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        const auth = getAuth();
+
+        window.onload = () => {
+            if (!auth.currentUser) {
+                window.location.href = 'index.html'; // Redirect if not signed in
+            }
+        };
+
+        function handleSignOut() {
+            signOut(auth).then(() => {
+                window.location.href = 'index.html'; // Redirect after sign out
+            }).catch((error) => {
+                console.error('Error signing out:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="imageedit_1_2693120119.png" alt="Gramixel Forge Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="darkModeToggle" class="toggle-btn">Switch to Light Mode</button>
+        </nav>
+    </header>
+
+    <!-- Request Form Section -->
+    <section id="request-form">
+        <h2>Submit Your Request</h2>
+        <form>
+            <label for="type">Type:</label>
+            <select id="type" name="type" required>
+                <option value="website">Website</option>
+                <option value="software">Software</option>
+            </select>
+
+            <div id="website-options" class="form-options">
+                <label for="pages">Number of Pages:</label>
+                <input type="number" id="pages" name="pages">
+                
+                <label for="logo">Company Logo (URL):</label>
+                <input type="url" id="logo" name="logo">
+                
+                <label for="palette">Color Palette (URL):</label>
+                <input type="url" id="palette" name="palette">
+            </div>
+
+            <div id="software-options" class="form-options">
+                <label for="features">Key Features:</label>
+                <textarea id="features" name="features"></textarea>
+            </div>
+
+            <label for="details">Additional Details:</label>
+            <textarea id="details" name="details"></textarea>
+
+            <button type="submit" class="btn">Submit Request</button>
+        </form>
+        <button onclick="handleSignOut()" class="btn">Sign Out</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Gramixel Forge. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
