@@ -1,9 +1,9 @@
 // Dark Mode Toggle
 const darkModeToggle = document.getElementById('darkModeToggle');
-let isDarkMode = true;
+let isDarkMode = false; // Assuming light mode is default initially
 
 darkModeToggle.addEventListener('click', () => {
-    if (isDarkMode) {
+    if (!isDarkMode) {
         document.body.classList.add('dark-mode');
         darkModeToggle.textContent = 'Switch to Dark Mode';
     } else {
