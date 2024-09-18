@@ -11,7 +11,11 @@
         const auth = getAuth();
 
         window.onload = () => {
-            if (!auth.currentUser) {
+            const user = auth.currentUser;
+            if (user) {
+                document.getElementById('welcomeMessage').textContent = `Welcome, ${user.displayName}`;
+                document.getElementById('userProfile').src = user.photoURL || 'default-avatar.png';
+            } else {
                 window.location.href = 'index.html'; // Redirect if not signed in
             }
         };
@@ -44,33 +48,12 @@
 
     <!-- Request Form Section -->
     <section id="request-form">
-        <h2>Submit Your Request</h2>
-        <form>
-            <label for="type">Type:</label>
-            <select id="type" name="type" required>
-                <option value="website">Website</option>
-                <option value="software">Software</option>
-            </select>
-
-            <div id="website-options" class="form-options">
-                <label for="pages">Number of Pages:</label>
-                <input type="number" id="pages" name="pages">
-                
-                <label for="logo">Company Logo (URL):</label>
-                <input type="url" id="logo" name="logo">
-                
-                <label for="palette">Color Palette (URL):</label>
-                <input type="url" id="palette" name="palette">
-            </div>
-
-            <div id="software-options" class="form-options">
-                <label for="features">Key Features:</label>
-                <textarea id="features" name="features"></textarea>
-            </div>
-
-            <label for="details">Additional Details:</label>
+        <h2>Request Form</h2>
+        <img id="userProfile" src="default-avatar.png" alt="User Profile Picture">
+        <p id="welcomeMessage">Loading...</p>
+        <form id="form" action="/submit-request" method="POST">
+            <label for="details">Request Details:</label>
             <textarea id="details" name="details"></textarea>
-
             <button type="submit" class="btn">Submit Request</button>
         </form>
         <button onclick="handleSignOut()" class="btn">Sign Out</button>
