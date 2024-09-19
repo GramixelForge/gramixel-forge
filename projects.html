@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects - Gramixel Forge</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        import { getFirestore, query, collection, where, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        const db = getFirestore();
+        const auth = getAuth();
+
+        // Load user's projects
+        document.addEventListener('DOMContentLoaded', async () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            const projectsList = document.getElementById('projectsList');
+
+            try {
+                const q = query(collection(db, 'projects'), where('userId', '==', user.uid));
+                const querySnapshot = await getDocs(q);
+
+                querySnapshot.forEach((doc) => {
+                    const project = doc.data();
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${project.title} - ${project.description}`;
+                    projectsList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error loading projects: ', error);
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="projects.html">My Projects</a></li>
+                <li><a href="#" onclick="signOutUser()">Sign Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="projects">
+        <h1>My Projects</h1>
+        <ul id="projectsList"></ul>
+    </section>
+
+    <footer>
+        <p>© 2024 Gramixel Forge. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

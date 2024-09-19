@@ -3,111 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard - Gramixel Forge</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Dashboard - Gramixel Forge</title>
     <link rel="stylesheet" href="styles.css">
     <script type="module">
-        // Firebase SDK imports
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
-        // Firebase config
-        const firebaseConfig = { /* your firebase config */ };
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        // Handle user state
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                document.getElementById('user-name').textContent = `Welcome, ${user.displayName}`;
-                loadProjects(user.uid);
+        // Redirect if not logged in
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) {
+                window.location.href = 'index.html'; // Redirect to login if not authenticated
             } else {
-                window.location.href = 'index.html'; // redirect if not signed in
+                document.getElementById('userProfileName').innerText = user.displayName;
             }
         });
 
-        // Sign out function
-        function logout() {
+        // Sign out functionality
+        window.signOutUser = () => {
+            const auth = getAuth();
             signOut(auth).then(() => {
+                localStorage.removeItem('user');
                 window.location.href = 'index.html';
             });
-        }
-
-        // Load user projects from Firestore
-        async function loadProjects(uid) {
-            const docRef = doc(db, "users", uid);
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                displayProjects(data.projects || []);
-            } else {
-                console.log("No such document!");
-            }
-        }
-
-        // Display user's projects
-        function displayProjects(projects) {
-            const projectList = document.getElementById('project-list');
-            projectList.innerHTML = "";  // Clear previous projects
-
-            projects.forEach((project, index) => {
-                const li = document.createElement('li');
-                li.textContent = `Project ${index + 1}: ${project.name}`;
-                projectList.appendChild(li);
-            });
-        }
-
-        // Add a new project
-        async function addProject() {
-            const projectName = document.getElementById('project-name').value;
-            const user = auth.currentUser;
-
-            if (user && projectName) {
-                const docRef = doc(db, "users", user.uid);
-                const docSnap = await getDoc(docRef);
-
-                let projects = docSnap.exists() ? docSnap.data().projects || [] : [];
-                projects.push({ name: projectName });
-
-                await setDoc(docRef, { projects }, { merge: true });
-                loadProjects(user.uid);
-                document.getElementById('project-name').value = ''; // Clear input
-            }
-        }
+        };
     </script>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="projects.html">My Projects</a></li>
+                <li><a href="#" onclick="signOutUser()">Sign Out</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <div class="logo">
-        <img src="imageedit_1_2693120119.png" alt="Gramixel Forge Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#" onclick="logout()">Log Out</a></li>
-        </ul>
-    </nav>
-</header>
+    <section class="dashboard">
+        <h1>Welcome, <span id="userProfileName"></span></h1>
+        <p>Ready to start your next project?</p>
+        <div class="cta-buttons">
+            <a href="create-project.html" class="btn">Create New Project Request</a>
+        </div>
+    </section>
 
-<section id="dashboard">
-    <h1 id="user-name">Welcome, User</h1>
-    <h2>Your Projects</h2>
-    <ul id="project-list">
-        <!-- User projects will be displayed here -->
-    </ul>
-
-    <h3>Create a New Project</h3>
-    <input type="text" id="project-name" placeholder="Enter project name" />
-    <button onclick="addProject()">Add Project</button>
-</section>
-
-<footer>
-    <p>© 2024 Gramixel Forge. All Rights Reserved.</p>
-</footer>
-
+    <footer>
+        <p>© 2024 Gramixel Forge. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>

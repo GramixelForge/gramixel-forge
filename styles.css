@@ -181,6 +181,10 @@ footer p {
     background-color: #5300cc;
 }
 
+.dark-mode .btn:hover {
+    background-color: #6a00ff;
+}
+
 .dark-mode footer {
     background-color: #eeeeee;
 }
@@ -201,5 +205,7 @@ footer p {
 .dark-mode .service-card {
     background-color: #f0f0f0;
 }
+
+
 
 /* dark mode toggle button */
